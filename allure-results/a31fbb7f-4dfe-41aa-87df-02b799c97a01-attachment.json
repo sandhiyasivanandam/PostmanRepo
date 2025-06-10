@@ -1,0 +1,12 @@
+{
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer 8aa8ac797517af9545d4f7655f4771ff9dc81faca144af9d3e8efc29e96ad3f0",
+    "User-Agent": "PostmanRuntime/7.39.1",
+    "Cache-Control": "no-cache",
+    "Postman-Token": "40a4a769-8afc-4e31-9730-801e4de61263",
+    "Host": "gorest.co.in",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive",
+    "Content-Length": "91"
+}

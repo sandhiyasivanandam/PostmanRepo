@@ -1,0 +1,6 @@
+{
+    "name": "Fredrick",
+    "gender": "female",
+    "email": "Burnice_Swift10@yahoo.com",
+    "status": "active"
+}

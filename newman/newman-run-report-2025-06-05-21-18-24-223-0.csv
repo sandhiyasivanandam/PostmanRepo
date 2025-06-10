@@ -1,0 +1,6 @@
+iteration,collectionName,requestName,method,url,status,code,responseTime,responseSize,executed,failed,skipped,totalAssertions,executedCount,failedCount,skippedCount
+"1","GoRest_EndPoints","Get Users List","GET","https://gorest.co.in/public/v2/users","OK","200","1312","1161",,,,"0","0","0","0"
+"1","GoRest_EndPoints","Create User","POST","https://gorest.co.in/public/v2/users","Unprocessable Entity","422","384","70","validating the response time","Validating Json response body, validating the status code",,"3","1","2","0"
+"1","GoRest_EndPoints","Get Specific User","GET","https://gorest.co.in/public/v2/users/","OK","200","388","1161",,,,"0","0","0","0"
+"1","GoRest_EndPoints","Update User","PATCH","https://gorest.co.in/public/v2/users/","Not Found","404","356","3523",,,,"0","0","0","0"
+"1","GoRest_EndPoints","Delete User","DELETE","https://gorest.co.in/public/v2/users/","Not Found","404","424","3523",,,,"0","0","0","0"

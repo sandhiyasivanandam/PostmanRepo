@@ -1,0 +1,62 @@
+//pm represents the Postman Object
+
+//pm.variables --> Local variables
+
+//pm.response() --- indicates the responses generated
+//pm.response.json() -represents the response generated in JSON
+
+//storing the json response to variable jsonbody
+const jsonbody = pm.response.json();
+
+//assigning user id from the json response to variable userID
+const userID = jsonbody["id"];
+
+//local variable is assigned during execution 
+pm.variables.set("User_ID",userID);
+
+// to write test case in postman
+//pm.test --> represents a test case
+
+//to validate json body
+pm.test("Validating Json response body",function(){
+
+    //pm.expect() --> Assertion library from chai JS
+
+    //to check whether id is a number
+    pm.expect(jsonbody["id"]).to.be.a("number");
+
+    //to check email is not null
+    pm.expect(jsonbody["email"]).is.not.null;
+
+    //to check whether the email value is valid
+    pm.expect(jsonbody["email"]).is.not.undefined;
+
+    //to check whether the json response has the keys in the response
+    pm.expect(jsonbody).to.have.keys(["id","name","email","gender","status"]);
+
+    //two ways to check whether the gender value is the one among the expected by passing the gender value as string
+    //or we can declare a array and check whether in the jsonbody the gender has it
+
+    //to check the options in the gender-male/female/others
+    pm.expect("male","female","others").to.include(jsonbody["gender"]);
+
+    //we can also check the options of the gender by declaring a JS array
+    //let genders = ["MALE","FEMALE","OTHERS"];
+    
+    //pm.expect(genders).to.include(jsonbody["gender"].toUpperCase());
+    
+    //to check whether the email is valid having @ symbol
+    pm.expect(jsonbody.email).include("@").includes(".com");
+});
+
+pm.test("validating the status code", function(){
+
+    pm.expect(pm.response.code).to.eql(201);
+})
+
+pm.test("validating the response time", function(){
+
+    pm.expect(pm.response.responseTime).to.be.lessThan(2000);
+})
+
+

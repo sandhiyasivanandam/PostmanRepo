@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="GoRest_EndPoints" tests="5" time="3.250">
+  <testsuite name="Get Users List" id="03aefa01-533a-4a3f-bd71-036b2e21646e" timestamp="2025-06-05T21:03:10.372Z" tests="0" failures="0" errors="0" time="1.439"/>
+  <testsuite name="Create User" id="2d6260e2-59f2-4b17-9381-0ea7a241fd05" timestamp="2025-06-05T21:03:10.372Z" tests="3" failures="0" errors="0" time="0.447">
+    <testcase name="Validating Json response body" time="0.447" classname="CreateUser"/>
+    <testcase name="validating the status code" time="0.447" classname="CreateUser"/>
+    <testcase name="validating the response time" time="0.447" classname="CreateUser"/>
+  </testsuite>
+  <testsuite name="Get Specific User" id="45a37a89-27d9-4bae-8f8f-1fbe147f13bc" timestamp="2025-06-05T21:03:10.372Z" tests="0" failures="0" errors="0" time="0.489"/>
+  <testsuite name="Update User" id="52ac3ba3-08be-450c-b86f-713ac67e7307" timestamp="2025-06-05T21:03:10.372Z" tests="0" failures="0" errors="0" time="0.475"/>
+  <testsuite name="Delete User" id="2d243827-95f6-4228-8e82-13f6bd90f401" timestamp="2025-06-05T21:03:10.372Z" tests="0" failures="0" errors="0" time="0.400"/>
+</testsuites>

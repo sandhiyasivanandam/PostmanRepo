@@ -1,0 +1,6 @@
+{
+    "name": "Garret",
+    "gender": "male",
+    "email": "Jaclyn25@gmail.com",
+    "status": "active"
+}

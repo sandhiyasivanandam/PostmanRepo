@@ -1,0 +1,6 @@
+{
+    "name": "Roosevelt",
+    "gender": "female",
+    "email": "Lori_Hegmann@hotmail.com",
+    "status": "active"
+}

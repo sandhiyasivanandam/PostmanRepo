@@ -1,0 +1,36 @@
+//before triggering the api calls - perform pre-defined activities
+
+//array for gender
+let genders = ["male", "female","others"];
+
+//pick a random gender 
+//math.floor -will take the lowest value - 4.2 --> 4
+//math.random returns value between 0 and 1 then it multiplied by the length of the array and that values floor is taken
+let randomGender = genders[Math.floor(Math.random()*genders.length)];
+//setting the variable
+pm.variables.set("Gender",randomGender);
+
+let status = ["active", "inactive"];
+
+let randomStatus = status[Math.floor(Math.random()*status.length)];
+//setting the variable for status
+pm.variables.set("Status",randomStatus);
+
+
+//old code
+//set the email
+pm.variables.set("Email","{{$randomEmail}}");
+
+//set the random name
+pm.variables.set("Name","{{$randomFirstName}}");
+//oldcode
+
+//let randomFirstName = pm.variables.replaceIn("{{$randomFirstName}}");
+//pm.variables.set("Name", randomFirstName);
+
+//let name = pm.variables.get("Name").toLowerCase();
+//console.log("User Name is:", name);
+
+//let timestamp = Date.now();
+//let email = `${name}${timestamp}@example.com`;
+//pm.variables.set("Email", email);

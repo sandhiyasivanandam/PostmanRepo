@@ -1,0 +1,6 @@
+{
+    "name": "Nettie",
+    "gender": "male",
+    "email": "Raphaelle.Grimes@gmail.com",
+    "status": "inactive"
+}

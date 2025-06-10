@@ -1,0 +1,6 @@
+{
+    "name": "Matilda",
+    "gender": "male",
+    "email": "Cornelius_Rosenbaum47@gmail.com",
+    "status": "active"
+}
