@@ -1,0 +1,336 @@
+{
+	"info": {
+		"_postman_id": "3a6458d0-a592-42bc-921a-8387e661fe49",
+		"name": "GoRest_EndPoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15596927",
+		"_collection_link": "https://api-testing-team-4131.postman.co/workspace/APITesting~93971b5a-3fec-4d9e-92bc-1b8cc3836a04/collection/15596927-3a6458d0-a592-42bc-921a-8387e661fe49?action=share&source=collection_link&creator=15596927"
+	},
+	"item": [
+		{
+			"name": "Get Users List",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 8aa8ac797517af9545d4f7655f4771ff9dc81faca144af9d3e8efc29e96ad3f0"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{goRestUrl}}/public/v2/users",
+					"host": [
+						"{{goRestUrl}}"
+					],
+					"path": [
+						"public",
+						"v2",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Specific User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 8aa8ac797517af9545d4f7655f4771ff9dc81faca144af9d3e8efc29e96ad3f0"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{goRestUrl}}/public/v2/users/{{User_ID}}",
+					"host": [
+						"{{goRestUrl}}"
+					],
+					"path": [
+						"public",
+						"v2",
+						"users",
+						"{{User_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//pm represents the Postman Object\r",
+							"\r",
+							"//pm.variables --> Local variables\r",
+							"\r",
+							"//pm.response() --- indicates the responses generated\r",
+							"//pm.response.json() -represents the response generated in JSON\r",
+							"\r",
+							"//storing the json response to variable jsonbody\r",
+							"const jsonbody = pm.response.json();\r",
+							"\r",
+							"//assigning user id from the json response to variable userID\r",
+							"const userID = jsonbody[\"id\"];\r",
+							"\r",
+							"//local variable is assigned during execution \r",
+							"pm.variables.set(\"User_ID\",userID);\r",
+							"\r",
+							"// to write test case in postman\r",
+							"//pm.test --> represents a test case\r",
+							"\r",
+							"//to validate json body\r",
+							"pm.test(\"Validating Json response body\",function(){\r",
+							"\r",
+							"    //pm.expect() --> Assertion library from chai JS\r",
+							"\r",
+							"    //to check whether id is a number\r",
+							"    pm.expect(jsonbody[\"id\"]).to.be.a(\"number\");\r",
+							"\r",
+							"    //to check email is not null\r",
+							"    pm.expect(jsonbody[\"email\"]).is.not.null;\r",
+							"\r",
+							"    //to check whether the email value is valid\r",
+							"    pm.expect(jsonbody[\"email\"]).is.not.undefined;\r",
+							"\r",
+							"    //to check whether the json response has the keys in the response\r",
+							"    pm.expect(jsonbody).to.have.keys([\"id\",\"name\",\"email\",\"gender\",\"status\"]);\r",
+							"\r",
+							"    //two ways to check whether the gender value is the one among the expected by passing the gender value as string\r",
+							"    //or we can declare a array and check whether in the jsonbody the gender has it\r",
+							"\r",
+							"    //to check the options in the gender-male/female/others\r",
+							"    pm.expect(\"male\",\"female\",\"others\").to.include(jsonbody[\"gender\"]);\r",
+							"\r",
+							"    //we can also check the options of the gender by declaring a JS array\r",
+							"    //let genders = [\"MALE\",\"FEMALE\",\"OTHERS\"];\r",
+							"    \r",
+							"    //pm.expect(genders).to.include(jsonbody[\"gender\"].toUpperCase());\r",
+							"    \r",
+							"    //to check whether the email is valid having @ symbol\r",
+							"    pm.expect(jsonbody.email).include(\"@\").includes(\".com\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validating the status code\", function(){\r",
+							"\r",
+							"    pm.expect(pm.response.code).to.eql(201);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"validating the response time\", function(){\r",
+							"\r",
+							"    pm.expect(pm.response.responseTime).to.be.lessThan(2000);\r",
+							"})\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"//before triggering the api calls - perform pre-defined activities\r",
+							"\r",
+							"//array for gender\r",
+							"let genders = [\"male\", \"female\",\"others\"];\r",
+							"\r",
+							"//pick a random gender \r",
+							"//math.floor -will take the lowest value - 4.2 --> 4\r",
+							"//math.random returns value between 0 and 1 then it multiplied by the length of the array and that values floor is taken\r",
+							"let randomGender = genders[Math.floor(Math.random()*genders.length)];\r",
+							"//setting the variable\r",
+							"pm.variables.set(\"Gender\",randomGender);\r",
+							"\r",
+							"let status = [\"active\", \"inactive\"];\r",
+							"\r",
+							"let randomStatus = status[Math.floor(Math.random()*status.length)];\r",
+							"//setting the variable for status\r",
+							"pm.variables.set(\"Status\",randomStatus);\r",
+							"\r",
+							"\r",
+							"//old code\r",
+							"//set the email\r",
+							"pm.variables.set(\"Email\",\"{{$randomEmail}}\");\r",
+							"\r",
+							"//set the random name\r",
+							"pm.variables.set(\"Name\",\"{{$randomFirstName}}\");\r",
+							"//oldcode\r",
+							"\r",
+							"//let randomFirstName = pm.variables.replaceIn(\"{{$randomFirstName}}\");\r",
+							"//pm.variables.set(\"Name\", randomFirstName);\r",
+							"\r",
+							"//let name = pm.variables.get(\"Name\").toLowerCase();\r",
+							"//console.log(\"User Name is:\", name);\r",
+							"\r",
+							"//let timestamp = Date.now();\r",
+							"//let email = `${name}${timestamp}@example.com`;\r",
+							"//pm.variables.set(\"Email\", email);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 8aa8ac797517af9545d4f7655f4771ff9dc81faca144af9d3e8efc29e96ad3f0"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"{{Name}}\",\r\n    \"gender\": \"{{Gender}}\",\r\n    \"email\": \"{{Email}}\",\r\n    \"status\": \"{{Status}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{goRestUrl}}/public/v2/users",
+					"host": [
+						"{{goRestUrl}}"
+					],
+					"path": [
+						"public",
+						"v2",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 8aa8ac797517af9545d4f7655f4771ff9dc81faca144af9d3e8efc29e96ad3f0"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"{{Name}}\",\r\n    \"email\": \"{{Email}}\",\r\n    \"status\": \"{{Status}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{goRestUrl}}/public/v2/users/{{User_ID}}",
+					"host": [
+						"{{goRestUrl}}"
+					],
+					"path": [
+						"public",
+						"v2",
+						"users",
+						"{{User_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 8aa8ac797517af9545d4f7655f4771ff9dc81faca144af9d3e8efc29e96ad3f0"
+					}
+				],
+				"url": {
+					"raw": "{{goRestUrl}}/public/v2/users/{{User_ID}}",
+					"host": [
+						"{{goRestUrl}}"
+					],
+					"path": [
+						"public",
+						"v2",
+						"users",
+						"{{User_ID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
