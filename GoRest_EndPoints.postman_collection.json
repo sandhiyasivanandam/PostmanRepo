@@ -52,51 +52,6 @@
 			"response": []
 		},
 		{
-			"name": "Get Specific User",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer 8aa8ac797517af9545d4f7655f4771ff9dc81faca144af9d3e8efc29e96ad3f0"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{goRestUrl}}/public/v2/users/{{User_ID}}",
-					"host": [
-						"{{goRestUrl}}"
-					],
-					"path": [
-						"public",
-						"v2",
-						"users",
-						"{{User_ID}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Create User",
 			"event": [
 				{
@@ -242,6 +197,51 @@
 						"public",
 						"v2",
 						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Specific User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 8aa8ac797517af9545d4f7655f4771ff9dc81faca144af9d3e8efc29e96ad3f0"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{goRestUrl}}/public/v2/users/{{User_ID}}",
+					"host": [
+						"{{goRestUrl}}"
+					],
+					"path": [
+						"public",
+						"v2",
+						"users",
+						"{{User_ID}}"
 					]
 				}
 			},
